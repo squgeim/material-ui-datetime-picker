@@ -1,0 +1,64 @@
+{
+  "name": "material-datetime-picker",
+  "version": "1.0.0",
+  "description": "Material UI component that combines DatePicker and TimePicker so that you can get both date and time from the same component.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rimraf lib; babel -d lib/ src/",
+    "lint": "eslint src",
+    "prettier": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/squgeim/material-datetime-picker.git"
+  },
+  "keywords": [
+    "material",
+    "ui",
+    "datepicker",
+    "timepicker",
+    "datetimepicker",
+    "redux",
+    "form"
+  ],
+  "author": "Shreya Dahal <shreyadahal@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/squgeim/material-datetime-picker/issues"
+  },
+  "homepage": "https://github.com/squgeim/material-datetime-picker#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.6",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-es2017": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "eslint": "^4.3.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^20.0.4",
+    "material-ui": "^0.18.0",
+    "prettier": "^1.5.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.4.0",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.7.2",
+    "redux-form": "^6.8.0",
+    "rimraf": "^2.6.1"
+  },
+  "peerDependencies": {
+    "material-ui": "^0.18.0",
+    "react": "^15.4.0",
+    "redux-form": "^6.8.0"
+  }
+}
