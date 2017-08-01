@@ -1,5 +1,5 @@
 {
-  "name": "material-datetime-picker",
+  "name": "material-ui-datetime-picker",
   "version": "1.0.0",
   "description": "Material UI component that combines DatePicker and TimePicker so that you can get both date and time from the same component.",
   "main": "lib/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/squgeim/material-datetime-picker.git"
+    "url": "git+ssh://git@github.com/squgeim/material-ui-datetime-picker.git"
   },
   "keywords": [
     "material",
