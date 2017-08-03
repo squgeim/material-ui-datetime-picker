@@ -3,25 +3,35 @@ import PropTypes from 'prop-types';
 import DateTimePicker from '../material';
 
 const ReduxFormDateTimePicker = ({
-  input, // eslint-disable-line no-unused-vars
-  label, // eslint-disable-line no-unused-vars
-  meta: { touched, error }, // eslint-disable-line no-unused-vars
-  ...rest
+  input: { onBlur, ...inputProps }, // eslint-disable-line no-unused-vars
+  meta: { touched, error, warning },
+  onChange,
+  ...props
 }) =>
   <DateTimePicker
-    onChange={(e, val) => input.onChange(val)}
-    {...rest}
-    value={input.value}
+    {...inputProps}
+    {...props}
+    {...(touched && { errorText: error || warning }) || {}}
+    onChange={(e, val) => {
+      if (typeof inputProps.onChange === 'function') {
+        inputProps.onChange(val);
+      }
+
+      if (typeof onChange === 'function') {
+        onChange(val);
+      }
+    }}
   />;
 
 ReduxFormDateTimePicker.propTypes = {
   input: PropTypes.shape({
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
   }),
-  label: PropTypes.object,
+  onChange: PropTypes.func,
   meta: PropTypes.shape({
     touched: PropTypes.bool,
-    error: PropTypes.error,
+    error: PropTypes.string,
+    warning: PropTypes.string,
   }),
 };
 
