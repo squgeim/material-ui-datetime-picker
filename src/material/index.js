@@ -10,16 +10,41 @@ class DateTimePicker extends React.Component {
       time: this.props.value,
       value: this.props.value,
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.getDateFromDateTime = this.getDateFromDateTime.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (isNaN(Date.parse(nextProps.value))) {
+      this.setState({
+        time: nextProps.value,
+        date: nextProps.value,
+        value: nextProps.value,
+      });
+
+      return;
+    }
+
+    if (Date.parse(nextProps.value) !== Date.parse(this.props.value)) {
+      const value = this.getDateFromDateTime({
+        date: new Date(nextProps.value),
+        time: new Date(nextProps.value),
+      });
+      this.setState({ value });
+    }
   }
 
   getDateFromDateTime({ date = this.state.date, time = this.state.time }) {
-    return new Date(
-      date && date.getFullYear(),
-      date && date.getMonth(),
-      date && date.getDate(),
-      time && time.getHours(),
-      time && time.getMinutes()
-    );
+    const dateArr = [];
+
+    date && date.getFullYear() && dateArr.push(date.getFullYear());
+    date && date.getMonth() && dateArr.push(date.getMonth());
+    date && date.getDate() && dateArr.push(date.getDate());
+    time && time.getHours() && dateArr.push(time.getHours());
+    time && time.getMinutes() && dateArr.push(time.getMinutes());
+
+    return new Date(...dateArr);
   }
 
   handleChange({ date = undefined, time = undefined }) {
