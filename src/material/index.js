@@ -5,10 +5,12 @@ import TimePicker from 'material-ui/TimePicker';
 
 class DateTimePicker extends React.Component {
   componentWillMount() {
+    const value = this.getValue(this.props.value);
+
     this.state = {
-      date: this.props.value,
-      time: this.props.value,
-      value: this.props.value,
+      date: value,
+      time: value,
+      value: value,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -16,7 +18,9 @@ class DateTimePicker extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (isNaN(Date.parse(nextProps.value))) {
+    const value = this.getValue(nextProps.value);
+
+    if (value === undefined) {
       this.setState({
         time: nextProps.value,
         date: nextProps.value,
@@ -27,12 +31,19 @@ class DateTimePicker extends React.Component {
     }
 
     if (Date.parse(nextProps.value) !== Date.parse(this.props.value)) {
-      const value = this.getDateFromDateTime({
-        date: new Date(nextProps.value),
-        time: new Date(nextProps.value),
-      });
-      this.setState({ value });
+      const date = new Date(nextProps.value);
+      const time = new Date(nextProps.value);
+      const value = this.getDateFromDateTime({ date, time });
+      this.setState({ date, time, value });
     }
+  }
+
+  getValue(value) {
+    if (isNaN(Date.parse(value))) {
+      return;
+    }
+
+    return new Date(value);
   }
 
   getDateFromDateTime({ date = this.state.date, time = this.state.time }) {
