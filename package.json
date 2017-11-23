@@ -8,7 +8,7 @@
     "lint": "eslint src",
     "prettier": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm build"
+    "prepare": "npm run-script build"
   },
   "repository": {
     "type": "git",
