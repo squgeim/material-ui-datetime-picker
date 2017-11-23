@@ -52,7 +52,7 @@ class DateTimePicker extends React.Component {
     if (!isNaN(Date.parse(date))) {
       dateArr[0] = date.getFullYear();
       dateArr[1] = date.getMonth();
-      dateArr[2] = date.getDay();
+      dateArr[2] = date.getDate();
     }
 
     if (!isNaN(Date.parse(time))) {
