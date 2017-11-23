@@ -49,11 +49,16 @@ class DateTimePicker extends React.Component {
   getDateFromDateTime({ date = this.state.date, time = this.state.time }) {
     const dateArr = [];
 
-    date && date.getFullYear() && dateArr.push(date.getFullYear());
-    date && date.getMonth() && dateArr.push(date.getMonth());
-    date && date.getDate() && dateArr.push(date.getDate());
-    time && time.getHours() && dateArr.push(time.getHours());
-    time && time.getMinutes() && dateArr.push(time.getMinutes());
+    if (!isNaN(Date.parse(date))) {
+      dateArr[0] = date.getFullYear();
+      dateArr[1] = date.getMonth();
+      dateArr[2] = date.getDay();
+    }
+
+    if (!isNaN(Date.parse(time))) {
+      dateArr[3] = date.getHours();
+      dateArr[4] = date.getMinutes();
+    }
 
     return new Date(...dateArr);
   }
