@@ -56,8 +56,8 @@ class DateTimePicker extends React.Component {
     }
 
     if (!isNaN(Date.parse(time))) {
-      dateArr[3] = date.getHours();
-      dateArr[4] = date.getMinutes();
+      dateArr[3] = time.getHours();
+      dateArr[4] = time.getMinutes();
     }
 
     return new Date(...dateArr);
